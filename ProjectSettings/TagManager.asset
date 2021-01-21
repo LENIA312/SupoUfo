@@ -9,6 +9,7 @@ TagManager:
   - a
   - Wall
   - OutArea
+  - Item
   layers:
   - Default
   - TransparentFX
