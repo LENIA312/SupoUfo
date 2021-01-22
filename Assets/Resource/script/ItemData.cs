@@ -52,6 +52,13 @@ public class ItemData : MonoBehaviour
                 break;
 
             case 1:
+                
+
+                Object.gameObject.GetComponent<PlayerCon_now>().Reset_Timer(3);
+                break;
+
+            case 2:
+
                 Object.gameObject.GetComponent<PlayerCon_now>().Reset_Timer(3);
                 break;
 

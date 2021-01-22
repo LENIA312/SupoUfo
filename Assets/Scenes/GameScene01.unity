@@ -2531,7 +2531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _PlayerObj: {fileID: 1721765386}
   _ArrowObj: {fileID: 505754}
-  _Speed: 10
+  _Speed: 1
   _PlayerScale: {x: 0, y: 0, z: 0}
   _KeyCode: 32
   _ScoreText: {fileID: 441208783}
@@ -3419,7 +3419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8057258131893598630}
   m_LocalRotation: {x: 1.7112914e-15, y: 1, z: -0.000000021855694, w: 0.0000000754979}
-  m_LocalPosition: {x: -2.68, y: 1, z: 0}
+  m_LocalPosition: {x: -2.68, y: 1, z: -0.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
