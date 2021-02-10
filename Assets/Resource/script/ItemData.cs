@@ -45,19 +45,19 @@ public class ItemData : MonoBehaviour
         switch (ItemNum)
         {
             case 0: // テスト
-                Object.gameObject.GetComponent<PlayerCon_now>().AddScore(1);
+                Object.gameObject.GetComponent<Player_Controller>().AddScore(1,PlayerNum);
 
                 break;
 
             case 1:
 
-                Object.gameObject.GetComponent<PlayerCon_now>()._PlayerScale = new Vector3(2, 2, 2);
-                Object.gameObject.GetComponent<PlayerCon_now>().Reset_Timer(3);
+                //Object.gameObject.GetComponent<Player_Controller>()._PlayerScale = new Vector3(2, 2, 2);
+                Object.gameObject.GetComponent<Player_Controller>().Reset_Timer(3);
                 break;
 
             case 2:
-                Object.gameObject.GetComponent<PlayerCon_now>()._Speed = 10;
-                Object.gameObject.GetComponent<PlayerCon_now>().Reset_Timer(10);
+                Object.gameObject.GetComponent<Player_Controller>()._Speed = 10;
+                Object.gameObject.GetComponent<Player_Controller>().Reset_Timer(10);
                 break;
 
             default:

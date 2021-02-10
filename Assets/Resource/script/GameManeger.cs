@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManeger : MonoBehaviour
 {
     public int Player_Count; // プレイヤーの人数
-    public int[] Player_Score; // 各プレイヤーのスコア
+    int[] Player_Score = new int[4]; // 各プレイヤーのスコア
 
     public GameObject[] SpawnPoint = new GameObject[4]; // スポーンする初期値
     public GameObject Player_Obj; // プレイヤーオブジェクト
@@ -34,10 +34,12 @@ public class GameManeger : MonoBehaviour
         //人数に応じてプレイヤーを生成
         for(int i = 0; i < Player_Count; i++){
             GameObject Player = Instantiate(Player_Obj, new Vector3(SpawnPoint[i].transform.position.x,2f, SpawnPoint[i].transform.position.z),Quaternion.identity)as GameObject;
+            Player.name = "Player_" + i; 
             Player_Controller pc = Player.GetComponent<Player_Controller>();
             pc.SetPlayerNum(i);
             PlayerBox = GameObject.Find("PlayerBox");
             Player.transform.parent = PlayerBox.transform; // 子オブジェクトとしてセット
+            Player_Score[0] = 0;
         }
 
     }
@@ -84,6 +86,16 @@ public class GameManeger : MonoBehaviour
 
         PrintUI(); // UIの表示
         ScreenShot(KeyCode.S); // スクショ
+
+        for (int i = 0; i < Player_Count; i++){
+            GameObject Player = GameObject.Find("Player_" + i);
+            Player_Controller pc = Player.GetComponent<Player_Controller>();
+            //Debug.Log("Player" + j + " : " + pc.GetScore());
+            Player_Score[i] = pc.GetScore();
+        }
+        Debug.Log(Player_Score[0] + " : " + Player_Score[1] + " : " + Player_Score[2] + " : " + Player_Score[3]);
+
+
     }
 
     /// <summary>

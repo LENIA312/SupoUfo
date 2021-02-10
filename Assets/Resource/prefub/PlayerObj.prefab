@@ -231,7 +231,6 @@ GameObject:
   - component: {fileID: 4409861066123496556}
   - component: {fileID: 4409861066123496559}
   - component: {fileID: 4409861066123496558}
-  - component: {fileID: 4409861066123496545}
   - component: {fileID: 4409861066123496550}
   m_Layer: 0
   m_Name: PlayerObj
@@ -286,24 +285,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.2514399
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4409861066123496545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4409861066123496544}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6b7c213f2393349b5befdfbf9c6a17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _PlayerObj: {fileID: 3599379508067584741}
-  _ArrowObj: {fileID: 4409861065012774621}
-  _Speed: 5
-  _PlayerScale: {x: 0, y: 0, z: 0}
-  _KeyCode: 97
-  _PlayerNum: 1
 --- !u!114 &4409861066123496550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,8 +302,8 @@ MonoBehaviour:
   - {fileID: 2109829907787859386}
   _Player_Obj: {fileID: 3599379508067584741}
   _Arrow_Obj: {fileID: 4409861065012774621}
-  _KeyCode: 32
-  _Speed: 5
+  _PlayerScale: {x: 0, y: 0, z: 0}
+  _Speed: 2
   _PlayerNum: 1
 --- !u!1001 &758305401582278974
 PrefabInstance:

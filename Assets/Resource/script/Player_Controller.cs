@@ -13,14 +13,14 @@ public class Player_Controller : MonoBehaviour
     public GameObject _Arrow_Obj; // 矢印オブジェクト
 
     // Vector3
-    public static Vector3 _PlayerScale; // プレイヤーの拡大率
+    public Vector3 _PlayerScale; // プレイヤーの拡大率
     
     // float
     public float _Speed; // 移動および矢印の回転の速さ
 
     // int
     public int _PlayerNum; // プレイヤー識別番号
-    public static int _MyScore; // 自身のスコア
+    public static int[] _MyScore = { 0, 0, 0, 0 }; // スコア格納庫
 
     #endregion
 
@@ -65,13 +65,14 @@ public class Player_Controller : MonoBehaviour
         // リセットタイマーを稼働
         resetTimer += Time.deltaTime;
         if (resetTimer > resetTime) parametaInit();
+
+        //Debug.Log("Player_" + _PlayerNum + " : " + _MyScore[_PlayerNum]);
     }
 
     void init()
     {
 
         arrowTime = 0f; // 矢印回転時間の初期化
-        _MyScore = 0; // 得点のリセット
         aliveFlg = false; // 生存フラグの初期化
         _PlayerScale = new Vector3(1, 1, 1); // 拡大率の初期化
 
@@ -143,8 +144,8 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    public void AddScore(int Score){
-        _MyScore += Score; // スコアを加算
+    public void AddScore(int Score,int num){
+        _MyScore[num] += Score; // スコアを加算
     }
 
     public void Reset_Timer(float time){
@@ -154,7 +155,7 @@ public class Player_Controller : MonoBehaviour
 
     public int GetScore()
     {
-        return _MyScore; // 自身のスコアを返す
+        return _MyScore[_PlayerNum]; // 自身のスコアを返す
     }
 
     public void SetPlayerNum(int num)
@@ -219,4 +220,14 @@ public class Player_Controller : MonoBehaviour
         return returnCode;
     }
 
+    void OnTriggerEnter(Collider Object)
+    {
+
+        // 当たったオブジェクトのタグがPlayerなら
+        if (Object.gameObject.tag == "Item")
+        {
+            Object.gameObject.GetComponent<ItemData>().Action(_PlayerNum); // アクションを実行させる
+
+        }
+    }
 }
