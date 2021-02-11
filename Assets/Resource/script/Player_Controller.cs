@@ -54,7 +54,6 @@ public class Player_Controller : MonoBehaviour
         keyCode = GetKeycode(_PlayerNum); // プレイヤー別に別々の操作キーを指定
     }
 
-
     // Update is called once per frame
     void Update(){
         //GameManagerのコンポーネントを取得
@@ -63,13 +62,16 @@ public class Player_Controller : MonoBehaviour
         
         // ゲームが開始したら動かす
         if (gm._GameStartFlg)PlayerMove();
-        // 拡大率
+        // プレイヤーの拡大率
         this.transform.localScale = _PlayerScale;
         // リセットタイマーを稼働
         resetTimer += Time.deltaTime;
         if (resetTimer > resetTime) parametaInit();
     }
 
+    /// <summary>
+    /// 初期化
+    /// </summary>
     void init()
     {
 
@@ -80,14 +82,18 @@ public class Player_Controller : MonoBehaviour
         defauleSpeed = _Speed; // スピードの初期値を決定
         resetTimer = 0; // タイマーの初期化
     }
-
+    /// <summary>
+    /// パラメータの初期化
+    /// </summary>
     void parametaInit()
     {
         _Speed = defauleSpeed; // スピードの初期化
         _PlayerScale = new Vector3(1, 1, 1); // 拡大率の初期化
         resetTimer = 0; // タイマーの初期化
     }
-
+    /// <summary>
+    /// プレイヤーを動かす
+    /// </summary>
     void PlayerMove(){
 
         /**[ Regidbodyの取得・設定]**/
@@ -124,7 +130,10 @@ public class Player_Controller : MonoBehaviour
             angle = (float)(rad * 180 / 3.14);
         }
     }
-
+    /// <summary>
+    /// 矢印の回転
+    /// </summary>
+    /// <param name="Speed"></param>
     void ArrowSpin(float Speed){
         float radius = 0.8f; // 矢印回転の半径
 
@@ -144,26 +153,43 @@ public class Player_Controller : MonoBehaviour
         _Arrow_Obj.transform.rotation = Quaternion.Lerp(_Arrow_Obj.transform.rotation, look, 1f);
 
     }
-
+    /// <summary>
+    /// スコアの加算
+    /// </summary>
+    /// <param name="Score"></param>
+    /// <param name="num"></param>
     public void AddScore(int Score,int num){
         _MyScore[num] += Score; // スコアを加算
     }
-
+    /// <summary>
+    /// リセットタイマー
+    /// </summary>
+    /// <param name="time"></param>
     public void Reset_Timer(float time){
         resetTimer = 0; // リセットタイマーを初期化
         resetTime = time; // 引数を基にリセットまでの時間をセット
     }
-
+    /// <summary>
+    /// スコアを取得
+    /// </summary>
+    /// <returns></returns>
     public int GetScore()
     {
         return _MyScore[_PlayerNum]; // 自身のスコアを返す
     }
-
+    /// <summary>
+    /// プレイヤー番号をセット
+    /// </summary>
+    /// <param name="num"></param>
     public void SetPlayerNum(int num)
     {
         _PlayerNum = num; // プレイヤー識別番号をセット
     }
-
+    /// <summary>
+    /// 識別番号に応じて色をセット
+    /// </summary>
+    /// <param name="mesh"></param>
+    /// <param name="mesh2"></param>
     void SetColor(MeshRenderer mesh, MeshRenderer mesh2)
     {
 
@@ -172,7 +198,11 @@ public class Player_Controller : MonoBehaviour
         //switch
 
     }
-
+    /// <summary>
+    /// 識別番号に応じた色を取得
+    /// </summary>
+    /// <param name="playerNum"></param>
+    /// <returns></returns>
     Color GetPlayerColor(int playerNum)
     {
         Color retuenColor = Color.clear;
@@ -196,7 +226,11 @@ public class Player_Controller : MonoBehaviour
         }
         return retuenColor; // 色を返却
     }
-
+    /// <summary>
+    /// 識別番号に応じて操作キーを取得
+    /// </summary>
+    /// <param name="playerNum"></param>
+    /// <returns></returns>
     KeyCode GetKeycode(int playerNum){
         KeyCode returnCode = KeyCode.None;
 
@@ -220,7 +254,10 @@ public class Player_Controller : MonoBehaviour
 
         return returnCode;
     }
-
+    /// <summary>
+    /// 当たり判定の処理
+    /// </summary>
+    /// <param name="Object"></param>
     void OnTriggerEnter(Collider Object)
     {
 

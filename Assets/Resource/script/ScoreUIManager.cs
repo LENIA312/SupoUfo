@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-
-
     public class ScoreUIManager : MonoBehaviour
     {
 
@@ -67,8 +65,6 @@ using UnityEngine.EventSystems;
         {
             CanvasRect = GameObject.Find("Canvas").GetComponent<RectTransform>(); // RectTransformを取得
             Magnification = CanvasRect.sizeDelta.x / Screen.width;
-
-
         }
 
         void Update()
