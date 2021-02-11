@@ -56,17 +56,18 @@ public class Player_Controller : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
-    {
-        // 動かす
-        PlayerMove();
+    void Update(){
+        //GameManagerのコンポーネントを取得
+        GameObject GM = GameObject.Find("GameManager");
+        GameManager gm = GM.GetComponent<GameManager>();
+        
+        // ゲームが開始したら動かす
+        if (gm._GameStartFlg)PlayerMove();
         // 拡大率
         this.transform.localScale = _PlayerScale;
         // リセットタイマーを稼働
         resetTimer += Time.deltaTime;
         if (resetTimer > resetTime) parametaInit();
-
-        //Debug.Log("Player_" + _PlayerNum + " : " + _MyScore[_PlayerNum]);
     }
 
     void init()
@@ -226,7 +227,7 @@ public class Player_Controller : MonoBehaviour
         // 当たったオブジェクトのタグがPlayerなら
         if (Object.gameObject.tag == "Item")
         {
-            Object.gameObject.GetComponent<ItemData>().Action(_PlayerNum); // アクションを実行させる
+            Object.gameObject.GetComponent<ItemManager>().Action(_PlayerNum); // アクションを実行させる
 
         }
     }

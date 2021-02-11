@@ -214,7 +214,7 @@ using UnityEngine.UI;
         // 当たったオブジェクトのタグがPlayerなら
         if (Object.gameObject.tag == "Item")
         {
-            Object.gameObject.GetComponent<ItemData>().Action(_PlayerNum); // アクションを実行させる
+            Object.gameObject.GetComponent<ItemManager>().Action(_PlayerNum); // アクションを実行させる
 
         }
     }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemData : MonoBehaviour
+public class ItemManager : MonoBehaviour
 {
     #region [ プレイヤーに変更を与える変数、関数 ]
     //_Speed : float : 矢印の回転の速さ、及び移動の速さ
@@ -51,8 +51,8 @@ public class ItemData : MonoBehaviour
 
             case 1:
 
-                //Object.gameObject.GetComponent<Player_Controller>()._PlayerScale = new Vector3(2, 2, 2);
-                Object.gameObject.GetComponent<Player_Controller>().Reset_Timer(3);
+                Object.gameObject.GetComponent<Player_Controller>()._PlayerScale = new Vector3(2, 2, 2);
+                Object.gameObject.GetComponent<Player_Controller>().Reset_Timer(5);
                 break;
 
             case 2:
